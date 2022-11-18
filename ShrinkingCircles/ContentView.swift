@@ -56,6 +56,10 @@ struct ShrinkingCirclesRecursively: Shape {
         path.addEllipse(in: CGRect(x: rect.midX - rect.midY + 25 * j, y: 0 + 25 * j, width: rect.height - 50 * j, height: rect.height - 50 * j))
         
         // Decide whether to call the function again (recurse)
+        if currentDepth < desiredDepth {
+            let pathForNextCircle = recursiveHelper(currentDepth: currentDepth + 1, drawingIn: rect)
+            path.addPath(pathForNextCircle)
+        }
         
         // Return the path
         return path
@@ -69,7 +73,7 @@ struct ContentView: View {
             ShrinkingCircles()
                 .stroke(lineWidth: 5)
             
-            ShrinkingCirclesRecursively(desiredDepth: 4)
+            ShrinkingCirclesRecursively(desiredDepth: 3)
                 .stroke(lineWidth: 5)
         }
     }
