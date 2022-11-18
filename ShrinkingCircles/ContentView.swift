@@ -28,10 +28,46 @@ struct ShrinkingCircles: Shape {
     
 }
 
+struct ShrinkingCirclesRecursively: Shape {
+    
+    // MARK: Stored property
+    let desiredDepth: Int
+    
+    // MARK: Functions
+    func path(in rect: CGRect) -> Path {
+        // Make the path
+        var path = Path()
+        
+        // Begin calling the recursive helper
+        let allThePaths = recursiveHelper(currentDepth: 1)
+        path.addPath(allThePaths)
+        
+        // Return the path
+        return path
+    }
+    
+    func recursiveHelper(currentDepth: Int) -> Path {
+        
+        // Make the path
+        var path = Path()
+        
+        
+        
+        // Return the path
+        return path
+    }
+    
+}
+
 struct ContentView: View {
     var body: some View {
-        ShrinkingCircles()
-            .stroke(lineWidth: 5)
+        VStack {
+            ShrinkingCircles()
+                .stroke(lineWidth: 5)
+            
+            ShrinkingCirclesRecursively(desiredDepth: 4)
+                .stroke(lineWidth: 5)
+        }
     }
 }
 
