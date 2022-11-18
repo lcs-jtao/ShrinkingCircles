@@ -13,6 +13,8 @@ struct ShrinkingCircles: Shape {
         // Create the path
         var path = Path()
         
+        // Draw the circles using a loop
+        // Determine the number of circles by the height of the canvas
         for i in 0...Int(rect.height) / 50 {
             let diameter = rect.height - Double(i * 50)
             
